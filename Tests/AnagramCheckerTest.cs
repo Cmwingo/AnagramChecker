@@ -7,12 +7,17 @@ namespace Anagram
 {
   public class AnagramCheckerTest
   {
-    // [Fact]
-    // public void AnagramCheckerTest_OneWord_True()
-    // {
-    //   AnagramChecker testAnagramChecker = new AnagramChecker("bread", "beard");
-    //   Assert.Equal(true, testAnagramChecker.Check());
-    // }
+    [Fact]
+    public void AnagramCheckerTest_OneWord_True()
+    {
+      // bool goodData = true;
+      string testWord = "bread";
+      string testWordList = "beard";
+      AnagramChecker testAnagramChecker = new AnagramChecker(testWord, testWordList);
+      List<string> results = testAnagramChecker.Check();
+      string sortedTestWord = AnagramChecker.SortWord(testWord);
+      Assert.Equal(true, results[0] == sortedTestWord);
+    }
 
     [Fact]
     public void AnagramCheckerTest_MultipleWords_True()

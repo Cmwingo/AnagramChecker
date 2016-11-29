@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 namespace Anagram.Objects
 {
@@ -23,13 +24,26 @@ namespace Anagram.Objects
       string sortedWord = new string(word);
       return sortedWord;
     }
+
     public List<string> Check()
     {
-      _wordList = _userWordList.Split(',');
-      string sortedWord = AnagramChecker.SortWord(_word);
-      foreach(string possibleAnagram in _wordList)
+      if(_userWordList.Contains(','))
       {
-        string sortedPossibleAnagram = AnagramChecker.SortWord(possibleAnagram);
+        _wordList = _userWordList.Split(',');
+        string sortedWord = AnagramChecker.SortWord(_word);
+        foreach(string possibleAnagram in _wordList)
+        {
+          string sortedPossibleAnagram = AnagramChecker.SortWord(possibleAnagram);
+          if(sortedWord == sortedPossibleAnagram)
+          {
+            _resultList.Add(sortedPossibleAnagram);
+          }
+        }
+      }
+      else
+      {
+        string sortedWord = AnagramChecker.SortWord(_word);
+        string sortedPossibleAnagram = AnagramChecker.SortWord(_userWordList);
         if(sortedWord == sortedPossibleAnagram)
         {
           _resultList.Add(sortedPossibleAnagram);
