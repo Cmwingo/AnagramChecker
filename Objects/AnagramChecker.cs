@@ -8,7 +8,7 @@ namespace Anagram.Objects
   {
     private string _word;
     private string _userWordList;
-    private static string[] _wordList;
+    private  string[] _wordList;
     private List<string> _resultList = new List<string>();
 
     public AnagramChecker(string userWord, string userWordList)
@@ -36,7 +36,7 @@ namespace Anagram.Objects
           string sortedPossibleAnagram = AnagramChecker.SortWord(possibleAnagram);
           if(sortedWord == sortedPossibleAnagram)
           {
-            _resultList.Add(sortedPossibleAnagram);
+            _resultList.Add(possibleAnagram);
           }
         }
       }
