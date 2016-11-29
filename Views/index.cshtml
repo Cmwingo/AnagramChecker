@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Home Page</title>
+    <link href="/Content/css/bootstrap.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Enter a Word</h1>
+      <form action='/anagrams', method='post'>
+        <div class="form-group">
+          <label for="user-word">Input a word</label>
+          <input id="user-word" name="user-word" type="text" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="user-anagrams">Input words seperated by comma you think are anagrams</label>
+          <input id="user-anagrams" name="user-anagrams" type="text" class="form-control">
+        </div>
+
+        <button type="submit" class="btn-info">Anagram it!</button>
+      </form>
+    </div>
+  </body>
+</html>
