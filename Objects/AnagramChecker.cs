@@ -6,30 +6,39 @@ namespace Anagram.Objects
   public class AnagramChecker
   {
     private string _word;
-    private string _wordList;
+    private string _userWordList;
+    private static string[] _wordList;
+    private List<string> _resultList = new List<string>();
 
     public AnagramChecker(string userWord, string userWordList)
     {
       _word = userWord;
-      _wordList = userWordList;
+      _userWordList = userWordList;
     }
 
-    public bool Check()
+    public static string SortWord(string unsortedWord)
     {
-      char[] word = _word.ToCharArray();
-      char[] list = _wordList.ToCharArray();
+      char[] word = unsortedWord.ToCharArray();
       Array.Sort(word);
-      Array.Sort(list);
       string sortedWord = new string(word);
-      string sortedWordList = new string(list);
-      if(sortedWord == sortedWordList)
+      return sortedWord;
+    }
+    public List<string> Check()
+    {
+      _wordList = _userWordList.Split(',');
+      string sortedWord = AnagramChecker.SortWord(_word);
+      foreach(string possibleAnagram in _wordList)
       {
-        return true;
+        string sortedPossibleAnagram = AnagramChecker.SortWord(possibleAnagram);
+        if(sortedWord == sortedPossibleAnagram)
+        {
+          _resultList.Add(sortedPossibleAnagram);
+        }
       }
-      else
-      {
-        return false;
-      }
+      return _resultList;
     }
   }
 }
+// char[] word = _word.ToCharArray();
+// Array.Sort(word);
+// string sortedWord = new string(word);
